@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useAuth } from '@/hooks/useAuth';
+import { initPurchases } from '@/lib/purchases';
 import '../global.css';
 
 function AuthGuard({ children }: { children: React.ReactNode }) {
@@ -23,6 +24,10 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
 }
 
 export default function RootLayout() {
+  useEffect(() => {
+    initPurchases();
+  }, []);
+
   return (
     <AuthGuard>
       <StatusBar style="light" />
