@@ -56,9 +56,12 @@ Deno.serve(async (req) => {
           .eq('sport_id', sport.id)
           .order('published_at', { ascending: false })
           .limit(20)
-        return new Response(JSON.stringify({ articles: articles ?? [], cached: true }), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        })
+        // Only serve cache if it actually has articles (guard against empty-cache poison)
+        if (articles && articles.length > 0) {
+          return new Response(JSON.stringify({ articles, cached: true }), {
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          })
+        }
       }
     }
 
