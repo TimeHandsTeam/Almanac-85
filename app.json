@@ -3,6 +3,7 @@
     "name": "Sports Almanac85",
     "slug": "sports-almanac85",
     "version": "1.0.0",
+    "runtimeVersion": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "sportsalmanac85",
@@ -14,14 +15,24 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.timehands.sportsalmanac85"
+      "bundleIdentifier": "com.timehands.sportsalmanac85",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Used for profile photo",
+        "NSPhotoLibraryUsageDescription": "Used to select profile photo"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0A0A0A"
       },
-      "package": "com.timehands.sportsalmanac85"
+      "package": "com.timehands.sportsalmanac85",
+      "versionCode": 1,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -30,10 +41,22 @@
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "react-native-purchases",
+        {
+          "androidApiKey": "",
+          "iosApiKey": ""
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "sports-almanac85"
+      }
     }
   }
 }
