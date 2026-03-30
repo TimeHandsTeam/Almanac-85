@@ -20,13 +20,8 @@ module.exports = {
         configFile: false,
         babelrc: false,
         presets: [
+          [require.resolve('@react-native/babel-preset'), { disableImportExportTransform: false }],
           require.resolve('@babel/preset-typescript'),
-          [require.resolve('@babel/preset-react'), { runtime: 'automatic' }],
-        ],
-        plugins: [
-          require.resolve('@babel/plugin-transform-flow-strip-types'),
-          require.resolve('@babel/plugin-transform-modules-commonjs'),
-          require.resolve('babel-plugin-syntax-hermes-parser'),
         ],
       },
     ],
